@@ -12,7 +12,7 @@
 [![Stack Overflow][stackoverflow-shield]][stackoverflow.com/users/11175375/adam]
 [![Leetcode][leetcode-shield]][eetcode.com/Hard_Code/]
 -->
-## Geometry Transformation on matrix
+## Basic opencv image manipulation
 
 <!-- TABLE OF CONTENTS -->
 <details open="open">
@@ -54,18 +54,17 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Apply geometry transformations on Eigen matrix
+Read, show, clone image in opencv
 
 <!--Built with -->
 ### Built With
 
 <br>
 
+* [opencv](https://opencv.org/)
 * [cmake](https://cmake.org/)
 * [gnu](https://www.gnu.org/)
-* [eigen](https://eigen.tuxfamily.org/)
-* [boost](https://boost.org/)
-* [sophus](https://github.com/strasdat/Sophus)
+
 <br>
 
 ## File Structure
@@ -83,10 +82,13 @@ Apply geometry transformations on Eigen matrix
 .
 ├── CMakeLists.txt
 ├── include
-│   └── Log.h
 ├── README.md
+├── ressource
+│   └── happy.jpeg
 └── src
-    └── useSophus.cpp
+    └── imageBasics.cpp
+
+
 
 ```
 
@@ -94,7 +96,7 @@ Apply geometry transformations on Eigen matrix
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is a sample code of how you may use  the Eigen library matrix and transformations.
+This is a sample code of how you may use  the opencv basic libs.
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
@@ -104,51 +106,80 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   sudo apt-get install cmake
   ```
- * eigen
- ```sh
- sudo apt-get install -y libeigen3-dev
+* [Install](https://askubuntu.com/questions/342202/failed-to-load-module-canberra-gtk-module-but-already-installed) `gtk` and `gtk3` module to access `canberra-gtk-module` used by `opencv imshow`
+ 
+  ```sh
+  sudo apt install libcanberra-gtk-module libcanberra-gtk3-module
+  ```
+ * Install first `opencv4` cpp libraries 
  ```
- * boost
- ```sh
- sudo apt-get install libboost-all-dev
+ sudo apt-get update
  ```
- * sophus
- ```sh
-git clone https://github.com/strasdat/Sophus.git
-cd Sophus/
-git checkout a621ff
-
-mkdir build
-cd build
-cmake ..
-make
-make install
  ```
- Change the following codes at line `/Sophus/sophus/so2.cpp:33:26` as commented
-```
-SO2::SO2()
-{
-  //unit_complex_.real() = 1.;
-  //unit_complex_.imag() = 0.;
-  unit_complex_.real(1.);
-  unit_complex_.imag(0.);
-}
-```
+ sudo apt-get upgrade
+ ```
+ ```
+ sudo apt-get install build-essential cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+ ```
+ ```
+ sudo apt-get install  python3-numpy libtbb2 libtbb-dev
+ ```
+ ```
+ sudo apt-get install libjpeg-dev libpng-dev libtiff5-dev libdc1394-22-dev libeigen3-dev libtheora-dev libvorbis-dev libxvidcore-dev libx264-dev sphinx-common libtbb-dev yasm libfaac-dev libopencore-amrnb-dev libopencore-amrwb-dev libopenexr-dev libgstreamer-plugins-base1.0-dev libavutil-dev libavfilter-dev libavresample-dev
+ ```
+ ```
+ cd /opt
+ ``
+ ```
+ git clone https://github.com/Itseez/opencv.git
+ ```
+ ```
+ git clone https://github.com/Itseez/opencv_contrib.git
+ ```
+ ```
+ cmake -D BUILD_TIFF=ON -D WITH_CUDA=OFF -D ENABLE_AVX=OFF -D WITH_OPENGL=OFF -D WITH_OPENCL=OFF -D WITH_IPP=OFF -D WITH_TBB=ON -D BUILD_TBB=ON -D WITH_EIGEN=OFF -D WITH_V4L=OFF -D WITH_VTK=OFF -D BUILD_TESTS=OFF -D BUILD_PERF_TESTS=OFF -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local -D OPENCV_EXTRA_MODULES_PATH=/opt/opencv_contrib/modules /opt/opencv/
+ ```
+ ```
+ make -j4
+ ```
+ ```
+ make install
+ ```
+ ```
+ ldconfig
+ ```
+ ```
+ sudo apt install libopencv-dev
+ ```
+ check opencv path
+ ```
+ pkg-config --cflags opencv4
+ ```
+ check opencv libs
+ ```
+ check opencv path
+ ```
+ pkg-config --libs opencv
+ ```
+ check opencv version
+ ```
+  pkg-config --modversion opencv4
+ ```
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/zoumson/Sohpus.git
+   git clone https://github.com/zoumson/Image.git
    ```
 2. Go to the project directory source
    ```sh
-   cd Sohpus
+   cd Image
    ```
-3. Create empty directories `build`, `log`, and `bin`
+3. Create empty directories `build`, and `bin`
    ```sh
-   mkdir build &&  mkdir bin && mkdir log
+   mkdir build &&  mkdir bin 
    ```
-5. Generate the exectutable `useSophus` and move it to `bin`
+5. Generate the exectutable `imageBasics` and move it to `bin`
    ```sh
    cd build && cmake .. && make -j4 && cd ..
    ```
@@ -157,7 +188,7 @@ SO2::SO2()
 ### Usage
 1. Run for matrix usage 
    ```sh
-   ./bin/useSohpus
+   ./bin/imageBasics ./ressource/happy.jpeg
    ```
 2. Output
    ```sh
@@ -166,7 +197,7 @@ SO2::SO2()
 
 4. Back to the initial file structure configuration
    ```sh
-   rm -r bin build log
+   rm -r bin build 
    ```
 <!-- ROADMAP -->
 ## Roadmap
@@ -198,7 +229,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adama Zouma - <!-- [@your_twitter](https://twitter.com/your_username) -->- stargue49@gmail.com
 
-Project Link: [https://github.com/zoumson/Sophus](https://github.com/zoumson/Sophus.git)
+Project Link: [https://github.com/zoumson/Image](https://github.com/zoumson/Image.git)
 
 
 
