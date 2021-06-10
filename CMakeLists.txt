@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.9)
 
 #set the project name
-project (sophus)
+project (image)
 
 #Set the compiler
 set(CMAKE_CXX_STANDARD 17)
@@ -19,17 +19,14 @@ set (CMAKE_CXX_FLAGS "-DPCL_ONLY_CORE_POINT_TYPES=ON -DNO_EXPLICIT_INSTANTIATION
 
 ############### Dependencies #######################
 
-find_package( Sophus REQUIRED )
-include_directories( ${Sophus_INCLUDE_DIRS} )
-SET(Boost_USE_STATIC_LIBS ON)
-find_package(Boost COMPONENTS program_options log log_setup REQUIRED)
-
-############### My Files #########################
-
 #Bring the headers
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
-#Bring the source files
-add_executable( useSophus ${PROJECT_SOURCE_DIR}/src/useSophus.cpp )
-target_link_libraries( useSophus ${Sophus_LIBRARIES} Boost::program_options Boost::log Boost::log_setup)
+# OpenCV
+find_package( OpenCV  REQUIRED )
+# header
+include_directories( ${OpenCV_INCLUDE_DIRS} )
 
+add_executable( imageBasics ${PROJECT_SOURCE_DIR}/src/imageBasics.cpp )
+# add lib
+target_link_libraries( imageBasics ${OpenCV_LIBS} )
