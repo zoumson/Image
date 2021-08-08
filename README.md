@@ -71,7 +71,6 @@ Read, show, clone image in opencv
 
 ### Folders
 
-* [include/](include/): c++ header files.
 * [src/](src/): c++ definitions.
 
 
@@ -81,14 +80,13 @@ Read, show, clone image in opencv
 ```
 .
 ├── CMakeLists.txt
-├── include
 ├── README.md
-├── ressource
+├── resource
 │   └── happy.jpeg
 └── src
     └── imageBasics.cpp
 
-
+2 directories, 4 files
 
 ```
 
