@@ -1,3 +1,0 @@
-/home/zouma/Documents/opencvAll/Image/build/CMakeFiles/rebuild_cache.dir
-/home/zouma/Documents/opencvAll/Image/build/CMakeFiles/edit_cache.dir
-/home/zouma/Documents/opencvAll/Image/build/CMakeFiles/imageBasics.dir
